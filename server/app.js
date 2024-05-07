@@ -1,11 +1,12 @@
 const express = require('express');
 
+const userRouter = require('./routes/userRoutes');
+
 const app = express();
+app.use(express.json())
 
-app.get('/', (req, res) => {
-    res.status(200).json({
-        status:"ok"
-    })
-})
 
-app.listen(4000, console.log("server is listening on port 400"))
+
+app.use('/api/v1/users', userRouter);
+
+module.exports = app
